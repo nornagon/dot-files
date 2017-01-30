@@ -1,0 +1,13 @@
+" I'm an abject nerd, gaze on my dvorak bindings and despair
+noremap t j
+noremap j t
+noremap n k
+noremap k n
+noremap s l
+noremap l s
+noremap <S-t> 12j
+noremap <S-n> 12k
+noremap K N
+
+" This doesn't actually seem to work in ideavim, but I live in hope.
+set smartcase

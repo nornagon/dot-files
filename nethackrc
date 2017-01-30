@@ -1,0 +1,15 @@
+OPTIONS=menucolors
+MENUCOLOR=" blessed "=green
+MENUCOLOR=" holy "=green
+MENUCOLOR=" cursed "=red
+MENUCOLOR=" unholy "=red
+MENUCOLOR=" cursed .* (being worn)"=orange&underline
+
+
+OPTIONS=DECgraphics
+OPTIONS=nolegacy
+OPTIONS=color
+OPTIONS=hilite_pet
+OPTIONS=lit_corridor
+OPTIONS=autopickup
+OPTIONS=pickup_types:$"?+!=/

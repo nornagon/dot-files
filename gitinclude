@@ -1,0 +1,32 @@
+[user]
+  name = Jeremy Apthorp
+  email = nornagon@nornagon.net
+[alias]
+  st = status --short --branch
+  ci = commit
+  lol = log --pretty=format:'%C(auto)%h%d %s [%an]' --decorate --graph
+  lola = log --pretty=format:'%C(auto)%h%d %s [%an]' --decorate --graph --branches
+  # List branches in date order ('branch by date')
+  bbd = "!export head=$(git symbolic-ref HEAD); git for-each-ref --sort=committerdate --format 'color=$(if [[ %(refname) = $head ]]; then printf \"\\e[32m\"; fi); printf \"\\e[01;30m%%15s\\e(B\\e[m  %%s%%s\\n\" %(committerdate:relative) $color %(refname:short)' refs/heads/ --shell | sh"
+  # 'rebase [one commit] onto'
+  ro = rebase head~ --onto
+  # 'rebase [one commit] here'
+  rh = !sh -c 'git rebase --onto head $1~ $1' -
+[color]
+  ui = auto
+[core]
+  deltaBaseCacheLimit = 1G
+  pager = less -x4
+[push]
+  default = simple
+[credential]
+  helper = osxkeychain
+[diff]
+  compactionHeuristic = true
+[pager]
+  # Uses diff-highlight from git contrib, (see path.zsh)
+  log = diff-highlight | less -x4 -R
+  show = diff-highlight | less -x4 -R
+  diff = diff-highlight | less -x4 -R
+[interactive]
+  diffFilter = diff-highlight
