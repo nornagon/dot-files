@@ -7,5 +7,6 @@ export PYTHONSTARTUP=~/.pythonrc
 typeset -U path cdpath fpath manpath
  
 [ -x "$(which rbenv)" ] && eval "$(rbenv init -)"
+[ -x "$(which pyenv)" ] && eval "$(pyenv init -)"
 
 . ~/.ellipsis/init.sh
