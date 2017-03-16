@@ -116,10 +116,10 @@ set incsearch
 let xml_use_xhtml = 1
  
 " i hold shift down too long when i hit :w...
-command W :w
-command Wq :wq
-command WQ :wq
-command Q :q
+command! W :w
+command! Wq :wq
+command! WQ :wq
+command! Q :q
  
 noremap <S-m> :w<CR>:!mvim %<CR>:q<CR>
  
