@@ -38,6 +38,10 @@ alias acsh='apt-cache show'
 alias pingle='ping www.google.com'
 alias mtr='sudo mtr'
 alias mtrgle='mtr www.google.com'
+
+alias gp='git pull --rebase && git push'
+alias gs='git status'
+alias gap='git add -p'
  
 # At least let me see what I fucked up
 alias cp='cp -v'
