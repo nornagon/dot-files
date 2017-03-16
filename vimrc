@@ -17,6 +17,7 @@ Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
 Plug 'scrooloose/syntastic'
 
 Plug 'pangloss/vim-javascript'
+Plug 'flowtype/vim-flow'
 Plug 'leafgarland/typescript-vim' " typescript syntax
 Plug 'Quramy/tsuquyomi'           " typescript fanciness
 Plug 'Shougo/vimproc.vim'         " required by tsuquyomi
@@ -26,6 +27,8 @@ Plug 'groenewege/vim-less' " lesscss
 Plug 'elzr/vim-json'
 Plug 'Shirk/vim-gas'
 Plug 'derekwyatt/vim-scala'
+Plug 'hail2u/vim-css3-syntax'
+Plug 'cakebaker/scss-syntax.vim'
 
 call plug#end()
 
@@ -160,6 +163,8 @@ au FileType json set tw=0
 
 " Let's all pretend
 au BufNewFile,BufRead *.glsl,*.vert,*.frag set ft=c
+
+au BufNewFile,BufRead *.scss,*.css set iskeyword+=-
  
 " vim -b : edit binary using xxd format
 augroup Binary
@@ -258,6 +263,8 @@ let g:syntastic_warning_symbol='⚠'
 let g:syntastic_style_error_symbol='✦'
 
 let g:jsx_ext_required = 0
+
+let g:javascript_plugin_flow = 1
 
 nnoremap <s-h> :SidewaysLeft<cr>
 nnoremap <s-s> :SidewaysRight<cr>
