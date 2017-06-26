@@ -6,12 +6,14 @@
 # Requires jq.
 random_word_def() {
   local random_word wordnik_for_word show_definition
+  local WORDNIK_API_KEY
+  WORDNIK_API_KEY=a2a73e7b926c924fad7001ca3111acd55af2ffabf50eb4ae5
   random_word() {
-    perl -e 'rand($.) < 1 && ($line = $_) while <>; print $line' < /usr/share/dict/words
+    curl -s http://api.wordnik.com/v4/words.json/randomWord"?api_key=${WORDNIK_API_KEY}" | jq -r '.word'
   }
   wordnik_for_word() {
     # You should probably get your own API key. It's pretty easy! http://developer.wordnik.com/
-    curl -s http://api.wordnik.com/v4/word.json/"$1"/definitions'?api_key=a2a73e7b926c924fad7001ca3111acd55af2ffabf50eb4ae5'
+    curl -s http://api.wordnik.com/v4/word.json/"$1"/definitions"?api_key=${WORDNIK_API_KEY}"
   }
   show_definition() {
     jq -r '
