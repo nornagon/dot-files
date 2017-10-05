@@ -30,3 +30,5 @@
   diff = diff-highlight | less -x4 -R
 [interactive]
   diffFilter = diff-highlight
+[rebase]
+  autosquash = true
