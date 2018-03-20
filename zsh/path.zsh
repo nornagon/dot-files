@@ -13,6 +13,7 @@ path_prepend "$HOME/bin"
 path_prepend "$HOME/local/bin"
 path_prepend "$HOME/work/arcanist/arcanist/bin"
 path_prepend "/usr/local/heroku/bin"
+path_prepend "/Applications/MacVim.app/Contents/bin"
 
 # brew installed git
 path_prepend "/usr/local/share/git-core/contrib/diff-highlight"
