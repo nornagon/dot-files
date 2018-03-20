@@ -53,10 +53,6 @@ alias hrc='heroku run rails c -a transcriptic'
 # Global aliases -- These do not have to be at the beginning of the command
 # line.
 alias -g L='|less'
-alias -g D='2&>/dev/null&'
-alias -g G='|egrep'
-alias -g T='|tail'
-alias -g H='|head'
  
 mkcd() { mkdir -p $1 && cd $1 }
  
