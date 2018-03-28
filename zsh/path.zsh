@@ -1,8 +1,15 @@
 # prepend something to $PATH if it's not there already.
 path_prepend() {
-  if [[ ! -d $1 ]]; then return; fi
+  if [[ ! -d "$1" ]]; then return; fi
   if [[ -n "$1" ]] {
     path=($1 $path)
+  }
+}
+
+path_append() {
+  if [[ ! -d "$1" ]]; then return; fi
+  if [[ -n "$1" ]] {
+    path=($path $1)
   }
 }
  
@@ -19,3 +26,5 @@ path_prepend "/Applications/MacVim.app/Contents/bin"
 path_prepend "/usr/local/share/git-core/contrib/diff-highlight"
 # git on ubuntu
 path_prepend "/usr/share/doc/git/contrib/diff-highlight"
+
+path_append "$HOME/work/depot_tools"
