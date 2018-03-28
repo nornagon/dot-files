@@ -17,6 +17,7 @@
 [core]
   deltaBaseCacheLimit = 1G
   pager = less -x4
+  precomposeUnicode = true
 [push]
   default = simple
 [credential]
