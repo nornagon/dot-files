@@ -4,7 +4,7 @@ My dotfiles.
 Dear future nornagon, install with [ellipsis][ellipsis]:
 
 ```
-$ curl -sL ellipsis.sh | PACKAGES='nornagon/files' sh
+$ curl -sL https://ellipsis.sh | PACKAGES='nornagon/files' sh
 ```
 
-[ellipsis]: http://ellipsis.sh
+[ellipsis]: https://ellipsis.sh
