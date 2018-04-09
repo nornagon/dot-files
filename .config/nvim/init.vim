@@ -3,7 +3,7 @@ set nocompatible
 call plug#begin()
 
 " Utils
-Plug 'jazzcore/ctrlp-cmatcher', { 'do': './install.sh' }
+"Plug 'jazzcore/ctrlp-cmatcher', { 'do': './install.sh' }
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'AndrewRadev/sideways.vim'
@@ -12,9 +12,9 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-sleuth'
 
 " Language support
-Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
-Plug 'scrooloose/syntastic'
+"Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
+"Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
+"Plug 'scrooloose/syntastic'
 
 Plug 'pangloss/vim-javascript'
 Plug 'flowtype/vim-flow'
@@ -76,9 +76,9 @@ set wrap linebreak showbreak=↪\
  
 " when you open a file you were just editing, vim should remember which line
 " you were on and put you back there.
-set viminfo='50,\"100,:40,n~/.viminfo
-au BufReadPost * if line("'\"") > 0 | if line("'\"") <= line("$") |
-    \ exe("norm '\"") | else | exe("norm $") | endif | endif
+"set viminfo='50,\"100,:40,n~/.viminfo
+"au BufReadPost * if line("'\"") > 0 | if line("'\"") <= line("$") |
+"    \ exe("norm '\"") | else | exe("norm $") | endif | endif
  
 " for completing file names, etc. complete the longest match. if i press tab
 " again, show me a list. if i press tab again, start cycling through the
@@ -103,17 +103,19 @@ set completeopt=longest,menuone
 " put swap files in ~/.vim-swp instead of in the directory of the file.
 " double / at the end means to uniquify the swap file names by using the full
 " path and replacing / with %
-silent !mkdir -p ~/.vim-swp
-set directory=~/.vim-swp//
+"silent !mkdir -p ~/.vim-swp
+"set directory=~/.vim-swp//
  
 " show file position in bottom-right corner
 set ruler
+" don't show a 1-line status bar at the bottom of the window
+set laststatus=0
  
 " incremental search
 set incsearch
  
 " iirc, the vim xml stuff is pretty annoying without this.
-let xml_use_xhtml = 1
+"let xml_use_xhtml = 1
  
 " i hold shift down too long when i hit :w...
 command! W :w
@@ -121,7 +123,7 @@ command! Wq :wq
 command! WQ :wq
 command! Q :q
  
-noremap <S-m> :w<CR>:!mvim %<CR>:q<CR>
+"noremap <S-m> :w<CR>:!mvim %<CR>:q<CR>
  
 " f1 does not need to do :h for me, thanks. especially since it's so close to
 " ESC
@@ -241,7 +243,7 @@ let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_max_depth = 40
 let g:ctrlp_max_files = 0
-let g:ctrlp_match_func = {'match' : 'matcher#cmatch'}
+"let g:ctrlp_match_func = {'match' : 'matcher#cmatch'}
 "let g:ctrlp_clear_cache_on_exit = 0
 let g:ctrlp_use_caching = 0
 " Requires The Silver Searcher https://geoff.greer.fm/ag/
@@ -268,3 +270,25 @@ let g:javascript_plugin_flow = 1
 
 nnoremap <s-h> :SidewaysLeft<cr>
 nnoremap <s-s> :SidewaysRight<cr>
+
+if has("gui_vimr")
+  "set guioptions-=m    " No menus
+  "set guioptions-=T    " No toolbar
+  "set guioptions-=r    " No scrollbars
+   
+  "set guicursor=a:blinkon0 " No cursor blinky
+   
+  " Fonts and other GUI settings
+  "set guifont=Menlo:h12
+  "set transparency=10
+ 
+  " Switch tabs with Cmd-Alt-<Arrows>, like Chrome
+  nmap <D-M-Right> gt
+  nmap <D-M-Left> gT
+ 
+  colo desert
+  hi LineNr guifg=#a0a0a0 guibg=NONE
+ 
+  " Fill the screen in fullscreen mode
+  "set fuopt=maxhorz,maxvert
+endif
