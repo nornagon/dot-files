@@ -22,24 +22,29 @@ alias gdb='gdb -q'
  
 alias a='ls'
 
-if [ -x "$(which nvim)" ]; then
-  alias e='nvim -p'
-  alias vi='nvim'
-  alias svi='sudo nvim'
-else
-  alias e='vim -p'
-  alias vi='vim'
-  alias svi='sudo vim'
-fi
+vim() {
+  if [ -x "$(which nvim)" ]; then
+    nvim "$@"
+  else
+    vim "$@"
+  fi
+}
 
-if [ -x "$(which vimr)" ]; then
-  alias m='vimr -p'
-  alias mvim='vimr -p'
-else
-  alias m='mvim -p'
-  alias mvim='mvim -p'
-fi
+mvim() {
+  if [ -x "$(which vimr)" ]; then
+    vimr "$@"
+  else
+    mvim "$@"
+  fi
+}
 
+alias e='vim -p'
+alias vi='vim'
+alias svi='sudo vim'
+
+
+alias m='mvim -p'
+alias mvim='mvim -p'
 
 alias grep=egrep
  
