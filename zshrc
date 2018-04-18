@@ -10,3 +10,5 @@ typeset -U path cdpath fpath manpath
 [ -x "$(which pyenv)" ] && eval "$(pyenv init -)"
 
 . ~/.ellipsis/init.sh
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"

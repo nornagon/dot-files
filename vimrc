@@ -12,8 +12,8 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-sleuth'
 
 " Language support
-Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
+" Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
+" Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
 Plug 'scrooloose/syntastic'
 
 Plug 'pangloss/vim-javascript'
@@ -29,6 +29,11 @@ Plug 'Shirk/vim-gas'
 Plug 'derekwyatt/vim-scala'
 Plug 'hail2u/vim-css3-syntax'
 Plug 'cakebaker/scss-syntax.vim'
+Plug 'hashivim/vim-terraform'
+Plug 'justinj/vim-pico8-syntax'
+Plug 'evanrelf/vim-pico8-color'
+Plug 'rust-lang/rust.vim'
+Plug 'racer-rust/vim-racer'
 
 call plug#end()
 
@@ -165,6 +170,9 @@ au FileType json set tw=0
 au BufNewFile,BufRead *.glsl,*.vert,*.frag set ft=c
 
 au BufNewFile,BufRead *.scss,*.css set iskeyword+=-
+
+au BufNewFile,BufRead *.p8 set nowrap | colo pico8
+"au BufNewFile,BufRead *.p8 set guifont=PICO-8:h12 | set linespace=3
  
 " vim -b : edit binary using xxd format
 augroup Binary
@@ -261,6 +269,8 @@ let g:syntastic_coffee_coffeelint_args = "--csv --file ~/.coffeelint.json"
 let g:syntastic_error_symbol='✗'
 let g:syntastic_warning_symbol='⚠'
 let g:syntastic_style_error_symbol='✦'
+let g:syntastic_cpp_compiler = 'clang++'
+let g:syntastic_cpp_compiler_options = ' -std=c++1z -stdlib=libc++'
 
 let g:jsx_ext_required = 0
 

@@ -86,6 +86,7 @@ fi
 # ssh to ec2 instances by name
 ip_for_ec2_instance() {
   aws ec2 describe-instances \
+    --region us-west-2 \
     --filters '{"Name":"tag:Name", "Values":["'"$1"'"]}' \
     --query="Reservations[0].Instances[0].PublicIpAddress" \
     | tr -d '"'
@@ -93,3 +94,9 @@ ip_for_ec2_instance() {
 ec2() {
   ssh ubuntu@$(ip_for_ec2_instance "$1") ${*:2}
 }
+
+unwhiteboard() {
+  convert "$1" -morphology Convolve DoG:15,100,0 -negate -normalize -blur 0x1 -channel RBG -level 60%,91%,0.1 "$2"
+}
+
+who_the_fuck_is_using_port() { sudo lsof -iTCP:$1 }
