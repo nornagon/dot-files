@@ -23,18 +23,18 @@ alias gdb='gdb -q'
 alias a='ls'
 
 vim() {
-  if [ -x "$(which nvim)" ]; then
+  if which nvim >/dev/null; then
     nvim "$@"
   else
-    vim "$@"
+    =vim "$@"
   fi
 }
 
 mvim() {
-  if [ -x "$(which vimr)" ]; then
+  if which vimr >/dev/null; then
     vimr "$@"
   else
-    mvim "$@"
+    =mvim "$@"
   fi
 }
 
