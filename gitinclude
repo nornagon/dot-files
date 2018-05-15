@@ -22,6 +22,7 @@
   default = simple
 [credential]
   helper = osxkeychain
+  helper = cache --timeout=3000000
 [diff]
   compactionHeuristic = true
 [pager]
