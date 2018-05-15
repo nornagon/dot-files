@@ -77,8 +77,10 @@ set wrap linebreak showbreak=↪\
 " when you open a file you were just editing, vim should remember which line
 " you were on and put you back there.
 "set viminfo='50,\"100,:40,n~/.viminfo
-"au BufReadPost * if line("'\"") > 0 | if line("'\"") <= line("$") |
-"    \ exe("norm '\"") | else | exe("norm $") | endif | endif
+au BufReadPost *
+  \ if line("'\"") > 1 && line("'\"") <= line("$") && &ft !~# 'commit'
+  \ |  exe "normal! g`\""
+  \ | endif
  
 " for completing file names, etc. complete the longest match. if i press tab
 " again, show me a list. if i press tab again, start cycling through the
