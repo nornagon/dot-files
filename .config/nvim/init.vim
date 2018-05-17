@@ -249,7 +249,7 @@ let g:ctrlp_max_files = 0
 "let g:ctrlp_clear_cache_on_exit = 0
 let g:ctrlp_use_caching = 0
 " Requires The Silver Searcher https://geoff.greer.fm/ag/
-let g:ctrlp_user_command = 'ag -l --nocolor -g "" %s'
+let g:ctrlp_user_command = 'rg -F --files --color never %s'
 
 " Don't show these in CtrlP
 set wildignore+=*/gen/*,*.so,*.swp,*.zip,*/tmp/*,*.pyc,*.class
