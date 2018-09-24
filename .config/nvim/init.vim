@@ -171,6 +171,9 @@ au FileType json set tw=0
 au BufNewFile,BufRead *.glsl,*.vert,*.frag set ft=c
 
 au BufNewFile,BufRead *.scss,*.css set iskeyword+=-
+
+au BufNewFile,BufRead *.gn,*.gni setf conf
+au BufNewFile,BufRead *.gyp,*.gypi setf python
  
 " vim -b : edit binary using xxd format
 augroup Binary
