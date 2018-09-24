@@ -10,6 +10,8 @@ Plug 'AndrewRadev/sideways.vim'
 Plug 'michaeljsmith/vim-indent-object' " vii selects block by indent
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-sleuth'
+Plug 'manasthakur/vim-commentor'
+Plug 'airblade/vim-gitgutter'
 
 " Language support
 "Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
