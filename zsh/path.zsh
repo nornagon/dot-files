@@ -29,3 +29,4 @@ path_prepend "/usr/local/share/git-core/contrib/diff-highlight"
 path_prepend "/usr/share/doc/git/contrib/diff-highlight"
 
 path_append "$HOME/work/depot_tools"
+path_append "$HOME/Source/depot_tools"
