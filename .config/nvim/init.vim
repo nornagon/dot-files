@@ -10,6 +10,8 @@ Plug 'AndrewRadev/sideways.vim'
 Plug 'michaeljsmith/vim-indent-object' " vii selects block by indent
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-sleuth'
+Plug 'manasthakur/vim-commentor'
+Plug 'airblade/vim-gitgutter'
 
 " Language support
 "Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
@@ -78,8 +80,10 @@ set wrap linebreak showbreak=↪\
 " when you open a file you were just editing, vim should remember which line
 " you were on and put you back there.
 "set viminfo='50,\"100,:40,n~/.viminfo
-"au BufReadPost * if line("'\"") > 0 | if line("'\"") <= line("$") |
-"    \ exe("norm '\"") | else | exe("norm $") | endif | endif
+au BufReadPost *
+  \ if line("'\"") > 1 && line("'\"") <= line("$") && &ft !~# 'commit'
+  \ |  exe "normal! g`\""
+  \ | endif
  
 " for completing file names, etc. complete the longest match. if i press tab
 " again, show me a list. if i press tab again, start cycling through the
@@ -168,6 +172,9 @@ au FileType json set tw=0
 au BufNewFile,BufRead *.glsl,*.vert,*.frag set ft=c
 
 au BufNewFile,BufRead *.scss,*.css set iskeyword+=-
+
+au BufNewFile,BufRead *.gn,*.gni setf conf
+au BufNewFile,BufRead *.gyp,*.gypi setf python
  
 " vim -b : edit binary using xxd format
 augroup Binary
@@ -248,7 +255,7 @@ let g:ctrlp_max_files = 0
 "let g:ctrlp_clear_cache_on_exit = 0
 let g:ctrlp_use_caching = 0
 " Requires The Silver Searcher https://geoff.greer.fm/ag/
-let g:ctrlp_user_command = 'ag -l --nocolor -g "" %s'
+let g:ctrlp_user_command = 'rg -F --files --color never %s'
 
 " Don't show these in CtrlP
 set wildignore+=*/gen/*,*.so,*.swp,*.zip,*/tmp/*,*.pyc,*.class

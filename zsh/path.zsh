@@ -30,3 +30,5 @@ path_prepend "/usr/share/doc/git/contrib/diff-highlight"
 
 path_append "$HOME/work/depot_tools"
 path_append "$HOME/Source/depot_tools"
+
+export RIPGREP_CONFIG_PATH="$HOME/.ripgreprc"
