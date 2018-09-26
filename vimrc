@@ -34,6 +34,7 @@ Plug 'justinj/vim-pico8-syntax'
 Plug 'evanrelf/vim-pico8-color'
 Plug 'rust-lang/rust.vim'
 Plug 'racer-rust/vim-racer'
+Plug 'ziglang/zig.vim'
 
 call plug#end()
 

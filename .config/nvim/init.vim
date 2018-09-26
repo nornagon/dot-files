@@ -29,6 +29,7 @@ Plug 'Shirk/vim-gas'
 Plug 'derekwyatt/vim-scala'
 Plug 'hail2u/vim-css3-syntax'
 Plug 'cakebaker/scss-syntax.vim'
+Plug 'ziglang/zig.vim'
 
 call plug#end()
 
