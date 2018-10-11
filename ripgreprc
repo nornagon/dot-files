@@ -3,3 +3,5 @@
 gyp:*.{gyp,gypi}
 --type-add
 grd:*.grd
+--type-add
+mojo:*.mojom
