@@ -31,3 +31,10 @@ zstyle ':completion:*:*:(^rm):*:*files' ignored-patterns '*?.o' '*?.c~' \
 zstyle ':completion::*:git-{name-rev,add,rm}:*' ignore-line true
 
 autoload bashcompinit
+bashcompinit
+
+_mill() {
+  local cur=${COMP_WORDS[COMP_CWORD]}
+  COMPREPLY=( $(compgen -W "$(mill resolve __ 2>/dev/null)" -- "$cur") )
+}
+complete -F _mill mill
