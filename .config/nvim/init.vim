@@ -121,6 +121,9 @@ set incsearch
  
 " iirc, the vim xml stuff is pretty annoying without this.
 "let xml_use_xhtml = 1
+
+" let % work on <> pairs
+set matchpairs+=<:>
  
 " i hold shift down too long when i hit :w...
 command! W :w
