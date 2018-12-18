@@ -40,7 +40,11 @@ mvim() {
 
 alias e='vim -p'
 alias vi='vim'
-alias svi='sudo vim'
+if command -v sudoedit >/dev/null 2>&1; then
+  alias svi=sudoedit
+else
+  alias svi='sudo vim'
+fi
 
 
 alias m='mvim -p'
