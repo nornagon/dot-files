@@ -29,7 +29,7 @@ random_word_def() {
       } as $short |
       .[] |
       "\(.word), \($short[.partOfSpeech // "null"] // .partOfSpeech).: \(.text)"
-    '
+    ' | sed -e 's/<[^>]*>//g'
   }
   wordnik_for_word "$(random_word)" | show_definition 2>/dev/null
 }
