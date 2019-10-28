@@ -244,6 +244,9 @@ endfunction
 nmap o :call OpenRelatedFile()<CR>
 nmap <M-o> :call OpenRelatedFile()<CR>
 nmap ø :call OpenRelatedFile()<CR>
+
+" Useful for electron
+set path+=..
  
 " Search should only be case-sensitive if a non-lowercase letter is typed.
 set ignorecase smartcase

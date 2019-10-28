@@ -100,3 +100,7 @@ unwhiteboard() {
 }
 
 who_the_fuck_is_using_port() { sudo lsof -iTCP:$1 }
+
+sar() {
+  rg -l "$1" | xargs sed -i '' "s/$1/$2/g"
+}
