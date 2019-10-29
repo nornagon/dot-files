@@ -147,6 +147,9 @@ inoremap <C-h> <esc>
 vnoremap <C-h> <esc>
 onoremap <C-h> <esc>
 nnoremap <C-h> <esc>
+
+" Esc in terminal mode should go back to normal
+tnoremap <Esc> <C-\><C-n>
  
 " do sane things with insane line endings, hopefully.
 set fileformats=unix,mac,dos
