@@ -273,8 +273,9 @@ set wildignore+=*/scala-2.10/cache/*,*.class,*/$global/*,*/reports/*
 set wildignore+=*/_site/*
 
 " + greps for the token under the cursor
-set grepprg=ag\ --nogroup\ --nocolor
-nnoremap + :grep! "\b<C-R><C-W>\b"<CR>:cw<CR><CR>
+set grepprg=rg\ --vimgrep\ --no-heading
+set grepformat=%f:%l:%c:%m,%f:%l:%m
+nnoremap + :sil grep! "\b""<C-R><C-W>""\b"<CR>:cw<CR>
 set switchbuf+=usetab,newtab
 
 let g:syntastic_coffee_coffeelint_args = "--csv --file ~/.coffeelint.json"
