@@ -33,6 +33,7 @@ Plug 'hail2u/vim-css3-syntax'
 Plug 'cakebaker/scss-syntax.vim'
 Plug 'ziglang/zig.vim'
 Plug 'LnL7/vim-nix'
+Plug 'stephpy/vim-yaml'
 
 call plug#end()
 
