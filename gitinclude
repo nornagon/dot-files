@@ -1,5 +1,5 @@
 [user]
-  name = Jeremy Apthorp
+  name = Jeremy Rose
   email = nornagon@nornagon.net
 [alias]
   st = status --short --branch
