@@ -36,3 +36,5 @@
   diffFilter = diff-highlight
 [rebase]
   autosquash = true
+[init]
+  defaultBranch = main
