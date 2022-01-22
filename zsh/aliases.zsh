@@ -66,7 +66,19 @@ alias cp='cp -v'
 alias rm='rm -v'
 
 alias rc='bundle exec rails c'
-alias hrc='heroku run rails c -a transcriptic'
+
+# https://twitter.com/thingskatedid/status/1316074032379248640
+idot() {
+  dot -Tpng \
+    -Ecolor=white \
+    -Gbgcolor=transparent \
+    -Ncolor=white \
+    -Nfontcolor=white \
+    -Gfontname=Monaco \
+    -Nfontname=Monaco \
+    -Efontname=Monaco \
+    "$@" | ~/.iterm2/imgcat
+}
  
 # Global aliases -- These do not have to be at the beginning of the command
 # line.
