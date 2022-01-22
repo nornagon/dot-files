@@ -1,4 +1,4 @@
-export EDITOR=`which vim`
+export EDITOR=`which nvim`
 export VISUAL=$EDITOR
 
 export PYTHONSTARTUP=~/.pythonrc
