@@ -12,3 +12,5 @@ typeset -U path cdpath fpath manpath
 . ~/.ellipsis/init.sh
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+export AGREE_NOTGOMA_TOS=1

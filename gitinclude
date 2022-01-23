@@ -7,11 +7,12 @@
   lol = log --pretty=format:'%C(auto)%h%d %s [%an]' --decorate --graph
   lola = log --pretty=format:'%C(auto)%h%d %s [%an]' --decorate --graph --branches
   # List branches in date order ('branch by date')
-  bbd = "!export head=$(git symbolic-ref HEAD); git for-each-ref --sort=committerdate --format 'color=$(if [[ %(refname) = $head ]]; then printf \"\\e[32m\"; fi); printf \"\\e[01;30m%%15s\\e(B\\e[m  %%s%%s\\n\" %(committerdate:relative) $color %(refname:short)' refs/heads/ --shell | sh"
+  bbd = branch --sort=-committerdate
   # 'rebase [one commit] onto'
   ro = rebase HEAD~ --onto
   # 'rebase [one commit] here'
   rh = !sh -c 'git rebase --onto HEAD $1~ $1' -
+  ec = !$EDITOR -p $(git diff --name-only --diff-filter=U)
 [color]
   ui = auto
 [core]
