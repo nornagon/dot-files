@@ -234,7 +234,7 @@ nmap \ :noh<CR>
  
 " Alt-O opens .h file if pressed in .cpp file and vice-versa.
 function! RelatedFiles()
-  return filter(split(globpath(expand('%:h'), expand('%:t:r').'.*')), '!bufloaded(v:val)')
+  return filter(split(globpath(expand('%:h'), expand('%:t:r').'.*')), '!bufloaded(v:val) || getbufinfo(v:val)[0].hidden')
 endfunction
 function! OpenRelatedFile()
   let files = RelatedFiles()
