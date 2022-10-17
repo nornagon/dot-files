@@ -71,6 +71,7 @@ alias rc='bundle exec rails c'
 idot() {
   dot -Tpng \
     -Ecolor=white \
+    -Efontcolor=white \
     -Gbgcolor=transparent \
     -Ncolor=white \
     -Nfontcolor=white \
