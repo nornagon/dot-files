@@ -22,9 +22,11 @@ path_prepend "$HOME/work/arcanist/arcanist/bin"
 path_prepend "/usr/local/heroku/bin"
 path_prepend "/Applications/MacVim.app/Contents/bin"
 path_prepend "$HOME/.cargo/bin"
+path_prepend "/opt/homebrew/bin"
 
 # brew installed git
 path_prepend "/usr/local/share/git-core/contrib/diff-highlight"
+path_prepend "/opt/homebrew/share/git-core/contrib/diff-highlight"
 # git on ubuntu
 path_prepend "/usr/share/doc/git/contrib/diff-highlight"
 
