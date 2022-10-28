@@ -13,3 +13,12 @@ OPTIONS=hilite_pet
 OPTIONS=lit_corridor
 OPTIONS=autopickup
 OPTIONS=pickup_types:$"?+!=/
+OPTIONS=hitpointbar
+
+OPTIONS=statushilites
+OPTIONS=hilite_status:hitpoints/100%/grey&normal
+OPTIONS=hilite_status:hitpoints/<100%/green&normal
+OPTIONS=hilite_status:hitpoints/<66%/yellow&normal
+OPTIONS=hilite_status:hitpoints/<50%/orange&normal
+OPTIONS=hilite_status:hitpoints/<33%/red&bold
+OPTIONS=hilite_status:hitpoints/<15%/red&inverse
