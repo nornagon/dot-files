@@ -36,4 +36,7 @@ path_append "$HOME/Source/depot_tools"
 export DENO_INSTALL="/Users/nornagon/.deno"
 path_prepend "$DENO_INSTALL/bin"
 
+export WASMTIME_HOME="$HOME/.wasmtime"
+path_prepend "$WASMTIME_HOME/bin"
+
 export RIPGREP_CONFIG_PATH="$HOME/.ripgreprc"
