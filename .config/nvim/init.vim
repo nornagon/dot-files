@@ -1,4 +1,17 @@
 set nocompatible
+function! JumpToByte(byte_nr)
+    " See https://vi.stackexchange.com/a/3911/2720 for the byte counting bug
+    let crt_byte = line2byte(line('.')) + col('.') - 1
+    if version < 781 && &l:binary == 1 && &l:eol == 0
+        let crt_byte += 1
+        let crt_byte += line('.') == 1
+    endif
+    let dst_byte = crt_byte + a:byte_nr
+    execute "normal " . dst_byte . "go"
+endfunction
+nnoremap <expr> <silent> GO ":<c-u>call JumpToByte(" . v:count . ")<cr>"
+nnoremap <expr> <silent> Go ":<c-u>call JumpToByte(-" . v:count . ")<cr>"
+
 
 call plug#begin()
 
