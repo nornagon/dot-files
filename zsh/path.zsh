@@ -33,4 +33,7 @@ path_prepend "/usr/share/doc/git/contrib/diff-highlight"
 path_append "$HOME/work/depot_tools"
 path_append "$HOME/Source/depot_tools"
 
+export DENO_INSTALL="/Users/nornagon/.deno"
+path_prepend "$DENO_INSTALL/bin"
+
 export RIPGREP_CONFIG_PATH="$HOME/.ripgreprc"
