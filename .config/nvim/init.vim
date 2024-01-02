@@ -12,12 +12,13 @@ endfunction
 nnoremap <expr> <silent> GO ":<c-u>call JumpToByte(" . v:count . ")<cr>"
 nnoremap <expr> <silent> Go ":<c-u>call JumpToByte(-" . v:count . ")<cr>"
 
-
 call plug#begin()
 
 " Utils
 "Plug 'jazzcore/ctrlp-cmatcher', { 'do': './install.sh' }
-Plug 'ctrlpvim/ctrlp.vim'
+"Plug 'ctrlpvim/ctrlp.vim'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'AndrewRadev/sideways.vim'
 Plug 'michaeljsmith/vim-indent-object' " vii selects block by indent
@@ -272,25 +273,39 @@ set ignorecase smartcase
 set nocompatible
 set backspace=indent,eol,start
 
-let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlP'
-let g:ctrlp_max_depth = 40
-let g:ctrlp_max_files = 0
-"let g:ctrlp_match_func = {'match' : 'matcher#cmatch'}
-"let g:ctrlp_clear_cache_on_exit = 0
-let g:ctrlp_use_caching = 0
-" Requires The Silver Searcher https://geoff.greer.fm/ag/
-let g:ctrlp_user_command = 'rg -F --files --color never %s'
+let $BAT_THEME="zenburn"
+let $FZF_DEFAULT_COMMAND="rg -F --files --color never"
+nmap <C-P> :FZF<CR>
+
+" let g:ctrlp_map = '<c-p>'
+" let g:ctrlp_cmd = 'CtrlP'
+" let g:ctrlp_max_depth = 40
+" let g:ctrlp_max_files = 0
+" "let g:ctrlp_match_func = {'match' : 'matcher#cmatch'}
+" "let g:ctrlp_clear_cache_on_exit = 0
+" let g:ctrlp_use_caching = 0
+" " Requires ripgrep
+" let g:ctrlp_user_command = '/opt/homebrew/bin/rg -F --files --color never %s'
 
 " Don't show these in CtrlP
-set wildignore+=*/gen/*,*.so,*.swp,*.zip,*/tmp/*,*.pyc,*.class
+set wildignore+=*/out/*,*/gen/*,*.so,*.swp,*.zip,*/tmp/*,*.pyc,*.class
 set wildignore+=*/scala-2.10/cache/*,*.class,*/$global/*,*/reports/*
 set wildignore+=*/_site/*
+
+let g:fzf_vim = {}
+"let g:fzf_vim.preview_window = []
 
 " + greps for the token under the cursor
 set grepprg=rg\ --vimgrep\ --no-heading
 set grepformat=%f:%l:%c:%m,%f:%l:%m
-nnoremap + :sil grep! "\b""<C-R><C-W>""\b"<CR>:cw<CR>
+if exists('g:vscode')
+  nnoremap + <Cmd>call VSCodeNotify('workbench.action.findInFiles', { 'query': expand('<cword>')})<CR>
+else
+  nnoremap <silent>+ :call fzf#vim#grep(
+    \ "rg --column --line-number --no-heading --color=always --smart-case -- "
+    \ . fzf#shellescape('\b'.expand('<cword>').'\b'),
+    \ fzf#vim#with_preview(), 0)<cr>
+endif
 set switchbuf+=usetab,newtab
 
 let g:syntastic_coffee_coffeelint_args = "--csv --file ~/.coffeelint.json"
@@ -304,6 +319,8 @@ let g:javascript_plugin_flow = 1
 
 nnoremap <s-h> :SidewaysLeft<cr>
 nnoremap <s-s> :SidewaysRight<cr>
+
+colo desert
 
 if has("gui_vimr")
   "set guioptions-=m    " No menus
@@ -321,7 +338,6 @@ if has("gui_vimr")
   nmap <D-M-Right> gt
   nmap <D-M-Left> gT
  
-  colo desert
   hi LineNr guifg=#a0a0a0 guibg=NONE
  
   " Fill the screen in fullscreen mode
