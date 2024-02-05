@@ -14,3 +14,5 @@ typeset -U path cdpath fpath manpath
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
 export AGREE_NOTGOMA_TOS=1
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
