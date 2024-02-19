@@ -1,8 +1,3 @@
-export EDITOR=`which nvim`
-export VISUAL=$EDITOR
-
-export PYTHONSTARTUP=~/.pythonrc
- 
 # automatically remove duplicates from these arrays
 typeset -U path cdpath fpath manpath
  
@@ -11,8 +6,12 @@ typeset -U path cdpath fpath manpath
 
 . ~/.ellipsis/init.sh
 
+export EDITOR=`which nvim`
+export VISUAL=$EDITOR
+export PYTHONSTARTUP=$HOME/.pythonrc
+
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
-export AGREE_NOTGOMA_TOS=1
-
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+test -e "${HOME}/.zshrc_local" && source "${HOME}/.zshrc_local"
