@@ -322,6 +322,7 @@ nnoremap <s-s> :SidewaysRight<cr>
 
 colo desert
 
+set guifont=JetBrains\ Mono:h14
 if has("gui_vimr")
   "set guioptions-=m    " No menus
   "set guioptions-=T    " No toolbar
@@ -332,7 +333,6 @@ if has("gui_vimr")
   " Fonts and other GUI settings
   "set guifont=Menlo:h12
   "set transparency=10
-  set guifont=JetBrains\ Mono:h14
  
   " Switch tabs with Cmd-Alt-<Arrows>, like Chrome
   nmap <D-M-Right> gt
@@ -342,6 +342,10 @@ if has("gui_vimr")
  
   " Fill the screen in fullscreen mode
   "set fuopt=maxhorz,maxvert
+endif
+
+if exists("g:neovide")
+  let g:neovide_remember_window_size = v:true
 endif
 
 "lua <<EOF
