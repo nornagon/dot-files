@@ -38,3 +38,5 @@ _mill() {
   COMPREPLY=( $(compgen -W "$(mill resolve __ 2>/dev/null)" -- "$cur") )
 }
 complete -F _mill mill
+
+command -v jj &> /dev/null && source <(jj util completion zsh)
