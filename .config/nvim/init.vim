@@ -26,6 +26,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-sleuth'
 Plug 'manasthakur/vim-commentor'
 Plug 'airblade/vim-gitgutter'
+Plug 'github/copilot.vim'
 
 " Language support
 "Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
