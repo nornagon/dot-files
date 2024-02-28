@@ -10,3 +10,5 @@ idl:*.idl
 --max-columns
 250
 --max-columns-preview
+-g
+!lang/po
