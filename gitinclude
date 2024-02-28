@@ -13,6 +13,8 @@
   ec = !$EDITOR -p $(git diff --name-only --diff-filter=U)
 [branch]
   sort = -committerdate
+[merge]
+  conflictstyle = zdiff3
 [color]
   ui = auto
 [core]
@@ -27,7 +29,7 @@
   helper = osxkeychain
   helper = cache --timeout=3000000
 [diff]
-  compactionHeuristic = true
+  algorithm = histogram
 [pager]
   # Uses diff-highlight from git contrib, (see path.zsh)
   log = diff-highlight | less -x4 -R
