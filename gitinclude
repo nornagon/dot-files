@@ -4,6 +4,18 @@
 [alias]
   st = status --short --branch
   ci = commit
+  bb = branch
+  b = !"f() { \
+    git branch \"$@\" --sort=-committerdate --sort=-HEAD --format=$'%(HEAD) %(refname:short) %(color:cyan)(%(committerdate:relative)) %(color:red)%(upstream:track)\\t%(color:default dim)%(subject)%(color:reset)' --color=always | column -ts$'\\t' | \
+    fzf --ansi \
+    --tiebreak begin \
+    --preview-window down,border-top,40% \
+    --color hl:underline,hl+:underline \
+    --no-hscroll \
+    --bind 'ctrl-/:change-preview-window(down,70%|hidden|)' \
+    --bind 'enter:become(git switch {1})' \
+    --preview \"git log --oneline --graph --date=short --color=always --pretty='format:%C(auto)%cd %h%d %s' -\\$LINES \\$(sed s/^..// <<< {} | cut -d' ' -f1) --\" \"$@\"; \
+    }; f"
   lol = log --pretty=format:'%C(auto)%h%d %s [%an]' --decorate --graph
   lola = log --pretty=format:'%C(auto)%h%d %s [%an]' --decorate --graph --branches
   # 'rebase [one commit] onto'
@@ -11,6 +23,7 @@
   # 'rebase [one commit] here'
   rh = !sh -c 'git rebase --onto HEAD $1~ $1' -
   ec = !$EDITOR -p $(git diff --name-only --diff-filter=U)
+  cleanup = "!git fetch --prune && git branch -vv | grep -v '^\\*' | grep ': gone]' | awk '{print $1}' | xargs -r git branch -D"
 [branch]
   sort = -committerdate
 [merge]
