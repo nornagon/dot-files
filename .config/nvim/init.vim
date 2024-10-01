@@ -17,16 +17,18 @@ call plug#begin()
 " Utils
 "Plug 'jazzcore/ctrlp-cmatcher', { 'do': './install.sh' }
 "Plug 'ctrlpvim/ctrlp.vim'
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
-Plug 'scrooloose/nerdtree'
+if !exists('g:vscode')
+  Plug 'tpope/vim-fugitive'
+  Plug 'tpope/vim-sleuth'
+  Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+  Plug 'junegunn/fzf.vim'
+  Plug 'scrooloose/nerdtree'
+  Plug 'airblade/vim-gitgutter'
+  Plug 'github/copilot.vim'
+endif
 Plug 'AndrewRadev/sideways.vim'
 Plug 'michaeljsmith/vim-indent-object' " vii selects block by indent
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-sleuth'
 Plug 'manasthakur/vim-commentor'
-Plug 'airblade/vim-gitgutter'
-Plug 'github/copilot.vim'
 
 " Language support
 "Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
@@ -34,22 +36,24 @@ Plug 'github/copilot.vim'
 "Plug 'scrooloose/syntastic'
 "Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
-Plug 'pangloss/vim-javascript'
-Plug 'flowtype/vim-flow'
-Plug 'leafgarland/typescript-vim' " typescript syntax
-"Plug 'Quramy/tsuquyomi'           " typescript fanciness
-"Plug 'Shougo/vimproc.vim'         " required by tsuquyomi
-Plug 'mxw/vim-jsx'
-Plug 'kchmck/vim-coffee-script'
-Plug 'groenewege/vim-less' " lesscss
-Plug 'elzr/vim-json'
-Plug 'Shirk/vim-gas'
-Plug 'derekwyatt/vim-scala'
-Plug 'hail2u/vim-css3-syntax'
-Plug 'cakebaker/scss-syntax.vim'
-Plug 'ziglang/zig.vim'
-Plug 'LnL7/vim-nix'
-Plug 'stephpy/vim-yaml'
+if !exists('g:vscode')
+  Plug 'pangloss/vim-javascript'
+  Plug 'flowtype/vim-flow'
+  Plug 'leafgarland/typescript-vim' " typescript syntax
+  "Plug 'Quramy/tsuquyomi'           " typescript fanciness
+  "Plug 'Shougo/vimproc.vim'         " required by tsuquyomi
+  Plug 'mxw/vim-jsx'
+  Plug 'kchmck/vim-coffee-script'
+  Plug 'groenewege/vim-less' " lesscss
+  Plug 'elzr/vim-json'
+  Plug 'Shirk/vim-gas'
+  Plug 'derekwyatt/vim-scala'
+  Plug 'hail2u/vim-css3-syntax'
+  Plug 'cakebaker/scss-syntax.vim'
+  Plug 'ziglang/zig.vim'
+  Plug 'LnL7/vim-nix'
+  Plug 'stephpy/vim-yaml'
+endif
 
 call plug#end()
 
@@ -95,13 +99,15 @@ set listchars+=tab:►─
 " there's a space at the end of that line, after the \. that's important.
 set wrap linebreak showbreak=↪\ 
  
-" when you open a file you were just editing, vim should remember which line
-" you were on and put you back there.
-"set viminfo='50,\"100,:40,n~/.viminfo
-au BufReadPost *
-  \ if line("'\"") > 1 && line("'\"") <= line("$") && &ft !~# 'commit'
-  \ |  exe "normal! g`\""
-  \ | endif
+if !exists('g:vscode')
+  " when you open a file you were just editing, vim should remember which line
+  " you were on and put you back there.
+  "set viminfo='50,\"100,:40,n~/.viminfo
+  au BufReadPost *
+    \ if line("'\"") > 1 && line("'\"") <= line("$") && &ft !~# 'commit'
+    \ |  exe "normal! g`\""
+    \ | endif
+endif
  
 " for completing file names, etc. complete the longest match. if i press tab
 " again, show me a list. if i press tab again, start cycling through the
@@ -174,14 +180,16 @@ set fileformats=unix,mac,dos
 " the one true shell
 set shell=/bin/zsh
  
-" Clever tab - if at start of line insert spaces; else complete word
-function! CleverTab()
-   if strpart( getline('.'), 0, col('.')-1 ) =~ '^\s*$'
-      return "\<Tab>"
-   else
-      return "\<C-N>"
-endfunction
-inoremap <Tab> <C-R>=CleverTab()<CR>
+if !exists('g:vscode')
+  " Clever tab - if at start of line insert spaces; else complete word
+  function! CleverTab()
+     if strpart( getline('.'), 0, col('.')-1 ) =~ '^\s*$'
+        return "\<Tab>"
+     else
+        return "\<C-N>"
+  endfunction
+  inoremap <Tab> <C-R>=CleverTab()<CR>
+endif
  
 " for C files, expand #i<SPACE> to #include<SPACE>, and similarly for #define.
 " set foldmethod=marker because C sucks at modularisation, and {{{/}}} makes
