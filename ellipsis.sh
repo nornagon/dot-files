@@ -20,6 +20,7 @@ pkg.init() {
 
 pkg.link() {
   fs.link_files .
-  mkdir -p $HOME/.config/nvim
-  fs.link_file ./.config/nvim/init.vim $HOME/.config/nvim/init.vim
+  fs.link_file ./.nvim 
+  mkdir -p $HOME/.config
+  fs.link_file ./.nvim $HOME/.config/nvim
 }

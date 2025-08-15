@@ -48,7 +48,7 @@ if [[ -n $MYVIMRC ]]; then
   _bracket_color='%{$fg_bold[green]%}'
 fi
  
-PS1=$_bracket_color'[$(__ps1_dir_color)\
+PS1=$_bracket_color'[\
 %{'$_hostcolor'%}%m%{$fg_bold[red]%}:%{$terminfo[sgr0]%}$(__custom_pwd)\
 $(__ps1_git_state)\
 '$_bracket_color']%{$terminfo[sgr0]%} '

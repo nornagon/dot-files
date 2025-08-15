@@ -26,6 +26,7 @@
   cleanup = "!git fetch --prune && git branch -vv | grep -v '^\\*' | grep ': gone]' | awk '{print $1}' | xargs -r git branch -D"
 [branch]
   sort = -committerdate
+  autoSetupMerge = simple
 [merge]
   conflictstyle = zdiff3
 [color]
@@ -38,6 +39,7 @@
   ff = only
 [push]
   default = simple
+  autoSetupRemote = true
 [credential]
   helper = osxkeychain
   helper = cache --timeout=3000000
