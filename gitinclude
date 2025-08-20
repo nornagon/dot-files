@@ -23,7 +23,6 @@
   # 'rebase [one commit] here'
   rh = !sh -c 'git rebase --onto HEAD $1~ $1' -
   ec = !$EDITOR -p $(git diff --name-only --diff-filter=U)
-  cleanup = "!git fetch --prune && git branch -vv | grep -v '^\\*' | grep ': gone]' | awk '{print $1}' | xargs -r git branch -D"
 [branch]
   sort = -committerdate
   autoSetupMerge = simple
@@ -65,3 +64,5 @@
   format = ssh
 [gpg "ssh"]
   allowedSignersFile = ~/.ssh/allowed_signers
+[alias]
+	cleanup = "!sh -c 'git fetch --prune && git for-each-ref --format=\"%(refname:short)|%(upstream:track)|%(worktreepath)\" refs/heads | while IFS=\"|\" read name track wpath; do case \"$track\" in *gone* ) : ;; * ) continue ;; esac; [ -z \"$wpath\" ] || { echo \"skip $name (checked out in worktree)\"; continue; }; git branch -D \"$name\"; done' -"
